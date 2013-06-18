@@ -1,0 +1,23 @@
+<div class="contextual">
+    <%= link_to(l(:label_edit), {:action => 'edit', :id => @faq.id}, :class => 'icon icon-edit') if User.current.admin? %> |
+    <%= link_to(l(:label_back), {:action => 'index'}, :class => 'icon icon-back') %>
+</div>
+
+<h2><%=l(:label_faq_show)%></h2>
+<div class="box">
+
+<b><%=l(:label_faq_creator)%>:</b>
+<%= h(@faq.creator) %>
+<br/>
+<b><%=l(:label_faq_new_question)%>:</b>
+
+<br/>
+<%= h(@faq.question) %>
+<br/>
+<br/>
+<b><%=l(:label_faq_new_answer)%>:</b>
+<br/>
+<%= h(@faq.answer) %>
+
+</div>
+

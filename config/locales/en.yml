@@ -1,0 +1,12 @@
+# English strings go here for Rails i18n
+en:
+  label_faq_new: New FAQ
+  label_faq_show: FAQ
+  label_faq_header: Frequently Asked Questions (FAQ)
+  button_faq_create: Create
+  label_faq_new_question: Question
+  label_faq_new_answer: Answer
+  table_header_question: Question
+  table_header_answer: Answer
+  table_header_creator: Creator
+  label_faq_creator: Creator

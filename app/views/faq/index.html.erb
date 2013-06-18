@@ -1,0 +1,46 @@
+<div class="contextual">
+    <%= link_to(l(:label_faq_new), {:action => 'new'}, :class => 'icon icon-add') if User.current.admin? %>
+</div>
+<h2><%=l(:label_faq_header) %></h2>
+<% delete_allowed = User.current.admin? %>
+
+<div class="autoscroll">
+<table class="list faq">
+  <thead><tr>
+    <%= sort_header_tag('question', :caption => l(:table_header_question)) %>
+    <%= sort_header_tag('answer', :caption => l(:table_header_answer), :default_order => 'desc') %>
+    <%= sort_header_tag('creator', :caption => l(:table_header_creator), :default_order => 'desc') %>
+    <th></th>
+    <th></th>
+  </tr></thead>
+  <tbody>
+  <% @faqs.each do |faq| %>
+      <tr class="faq <%= cycle("odd", "even") %>">
+  	<td>
+          <%= link_to h(faq.short_question(50)), :controller => "faq", :action=>"show", :id=>faq %>
+	</td>
+        <td align ="center">
+	  <span><%= h(faq.short_answer(75)) %>&nbsp;&nbsp;<em style="font-size:11px;"><%= link_to "details", :controller => "faq", :action=>"show", :id=>faq %> </em></span>
+	 </td>
+	 <td align ="center">
+          <%= h(faq.creator) %>
+	 </td>
+         <% if (delete_allowed) %>
+           <td align="center">
+            <%= link_to(image_tag('edit.png'), {:controller => 'faq', :action => 'edit', :id => faq}) %>
+           </td>
+           <td align="center">
+             <%= link_to(image_tag('delete.png'), {:controller => 'faq', :action => 'destroy', :id => faq},
+                    :confirm => l(:text_are_you_sure), :method => :post) %>
+           </td>
+         <% end %>
+	</tr>
+
+
+  <% end %>
+  <%reset_cycle %>
+  </tbody>
+</table>
+</div>
+<p class="pagination"><%= pagination_links_full @faq_pages, @faq_count %></p>
+

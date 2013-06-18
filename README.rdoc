@@ -1,0 +1,8 @@
+= redmine sitewide faq
+
+This redmine sitewide FAQ plugin provides Frequently Asked Question (FAQ) functionality that redmine does not have by default at the top of every page.
+Contains a rake file that creates a new faqs table.
+
+run $ rake redmine:plugins 
+
+This will migrate changes to database.
